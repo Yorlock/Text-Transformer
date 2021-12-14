@@ -53,5 +53,6 @@ class Scratch {
         System.out.println(text.toLowerCase());
         System.out.println(capitalize(text));
         System.out.println(inverse(text));
+        
     }
 }
