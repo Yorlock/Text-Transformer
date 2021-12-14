@@ -5,6 +5,6 @@ Dla osób pracujących z danymi tekstowymi nasza aplikacja Text Transformer umo�
 
 ## Role w zespole
 
-Kamila Kremis - Proxy Product Owner
-Dominik Łukasiewicz - Scrum Master
-Kacper Matecki - Developer
+  Kamila Kremis - Proxy Product Owner
+  Dominik Łukasiewicz - Scrum Master
+  Kacper Matecki - Developer
