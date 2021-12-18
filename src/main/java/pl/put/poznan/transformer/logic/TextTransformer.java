@@ -18,51 +18,25 @@ public class TextTransformer {
         for(String transform: transforms) {
             switch (transform) {
                 case "upper":
-                    result = upper(text);
+                    result = new Upper(result).getText();
                     break;
                 case "lower":
-                    result = lower(text);
+                    result = new Lower(result).getText();
                     break;
                 case "capitalize":
-                    result = capitalize(text);
+                    result = new Capitalize(result).getText();
                     break;
                 case "inverse":
-                    result = inverse(text);
+                    result = new Inverse(result).getText();
                     break;
                 case "intToWord":
-                    result = intToWord(text);
+                    result = new IntToWord(result).getText();
                     break;
                 case "repeats":
-                    result = repeats(text);
+                    result = new Repeats(result).getText();
                     break;
-
             }
         }
         return result;
     }
-
-    public String upper(String text) {
-        return text.toUpperCase();
-    }
-
-    public String lower (String text) {
-        return text.toLowerCase();
-    }
-
-    public String capitalize (String text) {
-        return WordUtils.capitalizeFully(text);
-    }
-
-    public String inverse(String text) {
-        return null;
-    }
-
-    public String intToWord(String text) {
-        return null;
-    }
-
-    public String repeats (String text) {
-        return null;
-    }
-
 }
