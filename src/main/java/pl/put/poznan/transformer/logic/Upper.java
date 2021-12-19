@@ -1,6 +1,6 @@
 package pl.put.poznan.transformer.logic;
 
-class Upper extends  TextDecorator {
+class Upper extends TextDecorator {
     public Upper(String text) {
         super(text);
     }
