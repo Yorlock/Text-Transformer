@@ -1,15 +1,27 @@
-name: Java CI
-on: [push]
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
 jobs:
   build:
-    runs-on: windows-latest
+
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-          cache: maven
-      - name: Validate, build and run tests
-        run: mvn --batch-mode --update-snapshots verify
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+        
+    - name: Delete previous jars
+      run: mvn clean
+
+    - name: Build with Maven
+      run: mvn --batch-mode --update-snapshots verify
