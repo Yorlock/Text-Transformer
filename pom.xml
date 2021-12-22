@@ -68,8 +68,8 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.1.1</version>
 		<configuration>
-		  <stylesheetfile>${basedir}/target/javadoc/stylesheet.css</stylesheetfile>
 		  <show>public</show>
+		  <nohelp>true</nohelp>
 		</configuration>
             </plugin>
 	   <plugin>
