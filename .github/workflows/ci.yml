@@ -25,7 +25,7 @@ jobs:
         with:
           name: Package
           path: staging
-      - name: "javadoc"
+      - name: javadoc
         run: |
           mkdir -p ~/.m2
           cd java
