@@ -102,7 +102,6 @@
                 </executions>
             </plugin>
         </plugins>
-	    <finalName>${finalName}</finalName>
     </build>
 
     <repositories>
