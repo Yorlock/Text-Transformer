@@ -68,6 +68,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
 		<version>3.3.1</version>
 		    <configuration>
+			<sourcepath>$Text-Transformer/target/javadoc</sourcepath>
 		    	<show>private</show>
 		    </configuration>
                 <executions>
