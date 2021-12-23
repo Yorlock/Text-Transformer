@@ -76,7 +76,7 @@
                         <id>attach-javadocs</id>
 			<phase>install</phase>
                         <goals>
-                            <goal>jaradoc</goal>
+                            <goal>javadoc</goal>
                         </goals>
                     </execution>
                 </executions>
