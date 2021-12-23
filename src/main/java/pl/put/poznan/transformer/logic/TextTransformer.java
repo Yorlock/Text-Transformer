@@ -35,6 +35,9 @@ public class TextTransformer {
                 case "repeats":
                     result = new Repeats(result).getText();
                     break;
+                case "swapsize":
+                    result = new SwapSize(result).getText();
+                    break;
             }
         }
         return result;
