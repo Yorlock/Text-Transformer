@@ -3,7 +3,7 @@ package pl.put.poznan.transformer.logic;
 /**
  * This is a concrete decorator which converts all lowercase characters to uppercase
  */
-class Upper extends TextDecorator {
+public class Upper extends TextDecorator {
     /**
      * Class constructor
      * @param text String which we want to transform

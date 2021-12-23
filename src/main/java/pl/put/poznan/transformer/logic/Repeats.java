@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Repeats extends TextDecorator {
+public class Repeats extends TextDecorator {
     public Repeats(String text) {
         super(text);
     }
