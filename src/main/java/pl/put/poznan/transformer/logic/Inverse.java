@@ -10,8 +10,8 @@ class Inverse extends TextDecorator {
     @Override
     public String getText() {
         String text = super.getText();
-        String result = "";
-        ArrayList<Boolean> uppers = new ArrayList<Boolean>();
+        StringBuilder result = new StringBuilder();
+        ArrayList<Boolean> uppers = new ArrayList<>();
 
         for (int i = 0; i < text.length(); i++) {
             if (Character.isUpperCase(text.charAt(i))) {
@@ -22,11 +22,11 @@ class Inverse extends TextDecorator {
         }
         for (int i = 0; i < text.length(); i++) {
             if (uppers.get(text.length() - i - 1)) {
-                result = Character.toUpperCase(text.charAt(i)) + result;
+                result.insert(0, Character.toUpperCase(text.charAt(i)));
             } else {
-                result = Character.toLowerCase(text.charAt(i)) + result;
+                result.insert(0, Character.toLowerCase(text.charAt(i)));
             }
         }
-        return result;
+        return result.toString();
     }
 }
