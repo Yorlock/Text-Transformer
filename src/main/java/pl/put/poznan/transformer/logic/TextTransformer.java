@@ -38,6 +38,8 @@ public class TextTransformer {
                 case "swapsize":
                     result = new SwapSize(result).getText();
                     break;
+                case "random":
+                    result = new Random(result).getText();
             }
         }
         return result;
