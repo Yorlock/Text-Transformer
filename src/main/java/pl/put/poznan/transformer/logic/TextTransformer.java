@@ -42,6 +42,8 @@ public class TextTransformer {
                     result = new Random(result).getText();
                 case "unfoldshortcut":
                    result = new UnfoldShortcut(result).getText();
+                case "foldshortcut":
+                    result = new FoldShortcut(result).getText();
             }
         }
         return result;

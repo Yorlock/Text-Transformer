@@ -11,6 +11,14 @@ public class UnfoldShortcut extends TextDecorator {
     public String getText() {
         String text = super.getText();
         String[] splitedText = text.split(" ");
+        if(splitedText.length == 1){
+            if(splitedText[0].toLowerCase().contains("prof.") || splitedText[0].toLowerCase().contains("prof") ||
+                    splitedText[0].toLowerCase().contains("dr.") || splitedText[0].toLowerCase().contains("dr") ||
+                    splitedText[0].toLowerCase().contains("np.") || splitedText[0].toLowerCase().contains("np") ||
+                    splitedText[0].toLowerCase().contains("itp.") || splitedText[0].toLowerCase().contains("itp")){
+                text = replaceStuff(text,"", "");
+            }
+        }
         if(splitedText[0].toLowerCase().contains("prof.") || splitedText[0].toLowerCase().contains("prof") ||
                 splitedText[0].toLowerCase().contains("dr.") || splitedText[0].toLowerCase().contains("dr") ||
                 splitedText[0].toLowerCase().contains("np.") || splitedText[0].toLowerCase().contains("np") ||
