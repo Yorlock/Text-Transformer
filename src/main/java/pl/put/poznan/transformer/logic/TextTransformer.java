@@ -40,6 +40,8 @@ public class TextTransformer {
                     break;
                 case "random":
                     result = new Random(result).getText();
+                case "unfoldshortcut":
+                   result = new UnfoldShortcut(result).getText();
             }
         }
         return result;
