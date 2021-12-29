@@ -1,6 +1,6 @@
 package pl.put.poznan.transformer.logic;
 
-class SwapSize extends TextDecorator {
+public class SwapSize extends TextDecorator {
     public SwapSize(String text) {
         super(text);
     }
