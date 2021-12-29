@@ -29,7 +29,7 @@ public class TextTransformer {
                 case "inverse":
                     result = new Inverse(result).getText();
                     break;
-                case "intToWord":
+                case "inttoword":
                     result = new IntToWord(result).getText();
                     break;
                 case "repeats":
