@@ -40,8 +40,10 @@ public class TextTransformer {
                     break;
                 case "random":
                     result = new Random(result).getText();
+                    break;
                 case "latexformat":
                     result = new LatexFormat(result).getText();
+                    break;
             }
         }
         return result;

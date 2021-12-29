@@ -16,19 +16,16 @@ public class TextTransformerController {
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
 
     @RequestMapping(value = "/api", method = RequestMethod.GET, produces = "application/json")
-    public String get(@RequestBody TextDTO textDTO) throws JSONException {
+    public TextDTO get(@RequestBody TextDTO textDTO) throws JSONException {
 
-        //return textDTO.getText();
         // log the parameters
         logger.debug(textDTO.getText());
         logger.debug(Arrays.toString(textDTO.getTransforms()));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        JSONObject response = new JSONObject();
         TextTransformer textTransformer = new TextTransformer(textDTO.getTransforms());
-        response.put("text", textTransformer.transform(textDTO.getText()));
-
-        return response.toString();
+        textDTO.setText(textTransformer.transform(textDTO.getText()));
+        return textDTO;
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")

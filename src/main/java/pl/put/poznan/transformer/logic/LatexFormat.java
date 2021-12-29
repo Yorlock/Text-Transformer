@@ -11,8 +11,20 @@ public class LatexFormat extends TextDecorator {
         StringBuilder result = new StringBuilder();
         for (int i=0; i<text.length(); i++)
             switch (text.charAt(i)){
-                case '&': result.append("\\&"); break;
-                case '$': result.append("\\$"); break;
+                case '&':
+                    if(i > 0 && text.charAt(i-1) == '\\'){
+                        result.append(text.charAt(i));
+                        break;
+                    }
+                    result.append("\\&");
+                    break;
+                case '$':
+                    if(i > 0 && text.charAt(i-1) == '\\'){
+                        result.append(text.charAt(i));
+                        break;
+                    }
+                    result.append("\\$");
+                    break;
                 default: result.append(text.charAt(i));
             }
         return result.toString();
