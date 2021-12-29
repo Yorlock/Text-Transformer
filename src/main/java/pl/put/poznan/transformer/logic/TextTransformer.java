@@ -44,6 +44,12 @@ public class TextTransformer {
                 case "latexformat":
                     result = new LatexFormat(result).getText();
                     break;
+                case "unfoldshortcut":
+                   result = new UnfoldShortcut(result).getText();
+                   break;
+                case "foldshortcut":
+                    result = new FoldShortcut(result).getText();
+                    break;
             }
         }
         return result;
