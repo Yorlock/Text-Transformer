@@ -18,7 +18,6 @@ public class TextTransformerController {
     @RequestMapping(value = "/api", method = RequestMethod.GET, produces = "application/json")
     public String get(@RequestBody TextDTO textDTO) throws JSONException {
 
-        //return textDTO.getText();
         // log the parameters
         logger.debug(textDTO.getText());
         logger.debug(Arrays.toString(textDTO.getTransforms()));
