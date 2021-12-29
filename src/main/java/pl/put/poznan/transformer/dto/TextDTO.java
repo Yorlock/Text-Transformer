@@ -3,9 +3,6 @@ package pl.put.poznan.transformer.dto;
 import java.util.List;
 
 public class TextDTO {
-    public TextDTO() {
-    }
-
     private String text;
     private List<String> transforms;
 
