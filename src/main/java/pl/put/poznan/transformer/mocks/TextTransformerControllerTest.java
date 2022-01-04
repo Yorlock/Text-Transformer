@@ -1,6 +1,7 @@
 package pl.put.poznan.transformer.mocks;
 
 import org.json.JSONException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -9,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import pl.put.poznan.transformer.app.TextTransformerApplication;
 import pl.put.poznan.transformer.dto.TextDTO;
+import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.rest.TextTransformerController;
 
 import java.util.ArrayList;
@@ -19,29 +21,25 @@ import static org.mockito.Mockito.*;
 
 class TextTransformerControllerTest {
 
+    private TextTransformer textTransformer = mock(TextTransformer.class);
     TextDTO textDTO;
     List<String> transforms;
-    @InjectMocks
-    TextTransformerController textTransformerController;
-
-    @Mock
-    Logger logger;
 
     @BeforeEach
     void setUp() throws Exception{
         textDTO = new TextDTO();
         transforms = new ArrayList<>();
-        MockitoAnnotations.initMocks(this);
     }
 
     @Test
     public void simpleSwapSizeTest() throws JSONException {
-
         textDTO.setText("test");
         transforms.add("swapsize");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("TEST", answer.getText());
+        String resultText = "TEST";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 
     @Test
@@ -49,8 +47,10 @@ class TextTransformerControllerTest {
         textDTO.setText("test TEST test");
         transforms.add("swapsize");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("TEST test TEST", answer.getText());
+        String resultText = "TEST test TEST";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 
     @Test
@@ -58,8 +58,10 @@ class TextTransformerControllerTest {
         textDTO.setText("tEsT");
         transforms.add("swapsize");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("TeSt", answer.getText());
+        String resultText = "TeSt";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 
     @Test
@@ -67,8 +69,10 @@ class TextTransformerControllerTest {
         textDTO.setText("tEsT iS ImPoRtEnT AnD SiMplE");
         transforms.add("swapsize");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("TeSt Is iMpOrTeNt aNd sImPLe", answer.getText());
+        String resultText = "TeSt Is iMpOrTeNt aNd sImPLe";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 
     @Test
@@ -77,8 +81,10 @@ class TextTransformerControllerTest {
         transforms.add("swapsize");
         transforms.add("upper");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("TEST IS IMPORTENT AND SIMPLE", answer.getText());
+        String resultText = "TEST IS IMPORTENT AND SIMPLE";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 
     @Test
@@ -88,8 +94,10 @@ class TextTransformerControllerTest {
         transforms.add("lower");
         transforms.add("capitalize");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("Test Is Importent And Simple", answer.getText());
+        String resultText = "Test Is Importent And Simple";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 
     @Test
@@ -98,8 +106,10 @@ class TextTransformerControllerTest {
         transforms.add("swapsize");
         transforms.add("repeats");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("!@#$% TEST SOME 123 LETTERS", answer.getText());
+        String resultText = "!@#$% TEST SOME 123 LETTERS";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 
     @Test
@@ -107,8 +117,10 @@ class TextTransformerControllerTest {
         textDTO.setText("!@#$%^&*(1234567890");
         transforms.add("swapsize");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("!@#$%^&*(1234567890", answer.getText());
+        String resultText = "!@#$%^&*(1234567890";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 
     @Test
@@ -117,16 +129,21 @@ class TextTransformerControllerTest {
         transforms.add("inttoword");
         transforms.add("upper");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("STO JEDENAŚCIE", answer.getText());
+        String resultText = "STO JEDENAŚCIE";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 
     @Test
     public void onlyWhitespaceSwapSizeTest() throws JSONException {
         textDTO.setText("   ");
+        transforms.add("unfoldshortcut");
         transforms.add("swapsize");
         textDTO.setTransforms(transforms);
-        TextDTO answer = textTransformerController.get(textDTO);
-        assertEquals("   ", answer.getText());
+        String resultText = "   ";
+        when(textTransformer.transform(textDTO.getText())).thenReturn(resultText);
+        TextTransformerController textTransformerController = new TextTransformerController();
+        Assertions.assertEquals(textTransformer.transform(textDTO.getText()), textTransformerController.get(textDTO).getText());
     }
 }
